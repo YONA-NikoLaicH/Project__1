@@ -1,0 +1,767 @@
+*{
+	box-sizing: border-box;
+}
+/* ? небольшой сброс стилей который является личным под каждого верстальщика и будет формироваться каждым в отдельности */
+a{
+	text-decoration: none;
+	display: inline-block;
+}
+ul,
+li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.container{
+	max-width: 1170px;
+	/* ? Где 1170 размер в макете а max-width для того что бы небыло нижнего скрола*/
+	margin: 0 auto;
+	/* ? этим  margin: 0 auto; мы центрируем .container*/
+	padding: 0 15px;
+	/* ? для того чтобы наш контейнер не прилепал к стенкам при просмотре на планшетах и телефонах где размер меньше чем 1170  мы резервируем ему место padding-ом*/
+}
+
+body{
+	font-family: 'PT Serif', serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
+	color: #5e5e5e;
+	/* !делаем акцентным шрифтом */
+	/* font-family: 'Roboto Mono', monospace; */
+	/* ! потключим в нужном месте */
+}
+/* ---------------------------------------------------------------------------------------- */
+.header{
+	font-family: 'Roboto Mono', monospace;
+}
+
+.header__top{
+	background-color: #303030;
+}
+/* ----------------------------------------------------------------------------------------- */
+.header__contacts:after{
+	content: "";
+	clear: both;
+	display: block;
+}
+/* !этот прием задается через родителя к элементам и тогда при изминении ширины и высоты ссылок фон блока останется на обшей высоте.  если использовали float к какомуто элементу*/
+.header__btn{
+	float: right;
+	line-height: 36px;
+	color: #1b1b1b;
+	background-color: #ffc222;
+	padding: 5px 20px 4px 50px;
+	font-size: 16px;
+	position: relative;
+}
+.header__btn:before{
+	content: "\f0b1";
+	font-family: 'icomoon';
+	position: absolute;
+	left: 22px;
+	color: #1b1b1b;
+}
+/* когда вставляем иконки необходимо прописать позиционирования как у начального обьекта так и у before */
+/* ------------------------------------------------------------------------------------------*/
+.header__phone,
+.header__email{
+	color: #cbcacb;
+	/* * font-size: 14px; указывать не надо т.к. уже указано на bady )))) */
+	letter-spacing: 0.25px;
+	/* растояние между символами в строке */
+	line-height: 45px;
+	position: relative;
+	/* для правильного пазиционирования иконок */
+}
+.header__phone{
+	padding-left: 20px;
+	padding-right: 30px;
+	/* 20 и 30 пикселей размеры указанные в макете между элементами и значками элемента */
+}
+.header__phone:before{
+	content: "\f095";
+	font-family: 'icomoon';
+	position: absolute;
+	left: 0;
+	color: #ffc222;
+}
+/* подключение иконки телефон */
+
+.header__email{
+	padding-left: 24px;
+	/* размер с макета с учетом значка */
+}
+.header__email:before{
+	content: "\f003";
+	font-family: 'icomoon';
+	position: absolute;
+	left: 0;
+	color: #ffc222;
+}
+/* подключаем иконку емаил */
+
+.header__content{
+	padding: 34px 0px 23px;
+}
+.header__content-inner{
+	display: flex;
+	justify-content: space-between;
+}
+
+.menu li{
+	display: inline-block;
+}
+.menu a{
+	color: #323232;
+	font-size: 16px;
+	/* шрифт задон выше в body */
+	line-height: 36px;
+	border: 1px solid transparent;
+	/* transparent-ом резервируем место под другой цвет при навидении курсора */
+	padding: 0px 16px;
+	transition: all .3s;
+}
+.menu a:hover{
+	border-color: #ffc222;
+}
+.menu li + li{
+	padding-left: 10px;
+}
+/* все li отступят друк от друга кроме первой */
+
+#modal{
+	display: none;
+}
+.slider{
+	background-image: url(../img/slider-fon.jpg);
+	background-repeat: no-repeat;
+	/* команда для того чтобы картинка не повторялась и была в единственном экземпляре */
+	background-size: cover;
+	/* каманда чтобы картинка растягивалась */
+	background-position: center;
+	min-height: 500px;
+	/* ! значение 500px указанно в макете ,данное значение в обязательном порядке указывать для адаптивности под увеличивающийся в нутри блока КОНТЕНТ*/
+	
+}
+.slider__item-content{
+	text-align: center;
+	padding-top: 110px;
+	max-width: 665px;
+	/* цифры  с макета */
+	margin: 0 auto;
+	/* центрируем обьект */
+
+}
+.slider__title{
+	text-transform: uppercase;
+	/* команда задает верхний регистр текста заглавиные буквы */
+	font-size: 30px;
+	line-height: 36px;
+	color: #fff;
+	font-weight: 500;
+	letter-spacing: 1.5px;
+	/* растояние между буквами в строке */
+	margin-bottom: 22px;
+	font-family: 'Roboto Mono', monospace;
+
+}
+.slider__text{
+	line-height: 24px;
+	font-size: 18px;
+	color: #d3d2d2;
+	margin-bottom: 50px;
+	/* этим отступом резервируется место для кнопочки ниже */
+}
+
+.default-btn{
+	display: inline-block;
+	font-style: 14px;
+	line-height: 24px;
+	color: #fff;
+	font-weight: 500;
+	font-family: 'Roboto Mono', monospace;
+	padding: 8px 30px 8px 24px;
+	/* было так padding: 8px 50px 8px 24px; */
+	border: 1px solid #ffc222;
+	border-right-width: 20px;
+	/* св-во увеличение одного border */
+	position: relative;
+}
+.default-btn:after{
+	content: "\f105";
+	font-family: 'icomoon';
+	/* при добавлении контента в виде иконок при команде content: необходимо прописывать font-family */
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: -12px;
+	/* этими действиями мы выравниваем стрелочку в слайдере  */
+	outline: none;
+	/* outline убираем ненужный контур */
+}
+.slider__inner{
+	position: relative;
+}
+.slick-btn{
+	position: absolute;
+	top: 70%;
+	z-index: 3;
+	/* небыл прописан  z-index: 3; и слайдер под номером 2 не работал*/
+	/* .slick-btn прописан в main.js */
+	width: 40px;
+	height: 40px;
+	border: 1px solid #fff;
+	cursor: pointer;
+	outline: none;
+	/* отключает цвет после нажатия курсором на обьект */
+	background-color: #ffc222;
+}
+.slick-btn.slick-disabled{
+	cursor: default;
+	background-color: transparent;
+}
+/* стилизация курсоров по возможности кликабельности обьекта */
+.slick-btn:before{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-family: 'icomoon';
+	color: #fff;
+}
+.slick-next:before{
+	content: "\f105";
+}
+.slick-prev:before{
+	content: "\f104";
+}
+.slick-next{
+	right: 0;
+}
+.slick-prev{
+	left: 0;
+}
+/* ---------------------------------------------------------------- */
+.services{
+	padding: 50px 0px 30px;
+}
+.services__top,
+.news__top{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 60px;
+}
+.services__title-box,
+.form__title-box,
+.news__title-box{
+	max-width: 520px;
+	/*! резервируем место в контейнере родителя под нужный элемент который будет встовляться после. обязательным условием является применение max-width: для того что есть большая вероятность тзменения после размера элемента  и конечно для адаптивного повидения контента*/
+	padding-left: 140px;
+	/*этим padding - ом мы резервируем обьекту место под position: absolute; , предворительно измерив расстояние в макете  */
+	position: relative;
+	/* !эта команда прописывается для того что бы в дальнейшем класс использовать через :before*/
+}
+.services__title-box::before,
+.form__title-box::before,
+.news__title-box::before{
+	content: "";
+	/* обязательно прописывается если визуализируется в before */
+	position: absolute;
+	width: 100px;
+	height: 2px;
+	background-color: #ffc222;
+	left: 0;
+	top: 11px;
+}
+.services__title,
+.form__title,
+.news__title{
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 24px;
+	color: #212020;
+	font-family: 'Roboto Mono', monospace;
+	margin-bottom: 10px;
+}
+.services__text,
+.form__text,
+.news__text{
+	letter-spacing: 0.1px;
+}
+.services__btn a,
+.news__btn a{
+	color: #373636;
+	line-height: 24px;
+	letter-spacing: .25px;
+	padding: 5px 38px;
+	border: 3px solid #e6e6e6;
+}
+.services__items{
+	display: flex;
+	justify-content: space-between;
+}
+.services__item{
+	max-width: 360px;
+	/* замеряли в макете */
+	text-align: center;
+	padding: 30px 0px 80px;
+	position: relative;
+	min-height: 375px;
+	/* размер взят из макета */
+	background-color: #f9f9f9;
+	box-shadow: 0px 7px 24.3px 2.7px rgba(91, 89, 89, 0.14);
+}
+.services__item-title{
+		color: #212020;
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: 500;
+	font-family: 'Roboto Mono', monospace;
+	padding: 24px 0px;
+}
+.services__item-text{
+	letter-spacing: .1px;
+	padding: 0px 30px 30px ;
+}
+.services__item-btn{
+	position: absolute;
+	bottom: 40px;
+	left: 0;
+	right: 0;
+	/* прием центрирования двух элементов с одним родителем */
+}
+.services__item-btn .default-btn{
+	color: #373636;
+	
+}
+.services__item-btn .default-btn::after{
+	color: #fff;
+	/* этим свойством мы вернули беллый цвет предмету декора в виде скобочки по напровлению */
+}
+.services__item-link{
+	color: #050505;
+	font-family: 'Roboto Mono', monospace;
+	/* text-decoration: underline; не подходит под подчеркивания т.к. не соответствует макету */
+	border-bottom: 1px solid #050505;
+	/* все остальные св-ва прописанны в bodi */
+	margin-right: 60px;
+	/* расстояние между соседним обьектом измерен в эскизе */
+}
+/* ------------------------------------------------------------ */
+.about{
+	background-image: url(../img/about-fon.jpg);
+	background-size: cover;
+	background-position: center;
+	min-height: 300px;
+	/* высату взяли с макета */
+	background-repeat: no-repeat;
+	/* команда для естественного функционала фона , без повторений */
+	padding: 25px 0px 45px;
+}
+.about__inner{
+	max-width: 545px;
+}
+.about__title{
+	padding: 10px 0px 25px;
+	margin-bottom: 20px;
+	font-size: 24px;
+	line-height: 24px;
+	color: #fff;
+	font-weight: 500;
+	font-family: 'Roboto Mono', monospace;
+}
+.about__text{
+	margin-bottom: 30px;
+	letter-spacing: 0.1px;
+	line-height: 24px;
+	color: #d3d2d2;
+}
+.about__btn.default-btn::after{
+	color: #000;
+}
+/* ---------------------------------------------------------------- */
+
+.form {
+	padding-top: 30px;
+}
+.form__inner {
+	padding-bottom: 40px;
+	background-image: url(../img/form-fon.png);
+	background-repeat: no-repeat;
+	min-height: 460px;
+	background-position: bottom right;
+}
+.form__box {
+	max-width: 850px;
+	padding-top: 45px;
+}
+.form__box-inner {
+	display: flex;
+	justify-content: space-between;
+}
+.form__box-left {
+	max-width: 260px;
+ 	width: 100%;
+}
+.form__box-right {
+	max-width: 555px;
+	width: 100%;
+}
+.form__box-inner label,
+.form__box-inner input,
+.form__box-inner textarea{
+	display: block;
+	width: 100%;
+}
+.form__box-inner label{
+	line-height: 36px;
+	color: #282828;
+	font-family: 'Roboto Mono', monospace;
+}
+.form__box-inner input{
+	margin-bottom: 8px;
+	outline: none;
+	height: 40px;
+	border: 1px solid #e6e6e6;
+	padding: 0px 10px;
+}
+.form__box-inner select{
+	outline: none;
+	padding-left: 17px;
+}
+.form__box-inner .jq-selectbox.jqselect{
+	display: block;
+	width: 100%;
+}
+.form__box-inner .jq-selectbox__select{
+	height: 40px;
+	border: 1px solid #e6e6e6;
+	padding-left: 17px;
+}
+/* при подключении плагина мы его меняем под стилистику сайта . При изминениии плагина обязательно в стилях перед плагином ставить его родителя*/
+.form__box-inner .jq-selectbox__trigger-arrow::before{
+	content: "\f105";
+	font-family: 'icomoon';
+	position: absolute;
+	right: 17px;
+	top: 0;
+	transform: rotate(90deg);
+}
+.form__box-inner .jq-selectbox__dropdown {
+	/* это убираем так как это уже прописанно ранее "box-sizing: border-box;" */
+	width: 100%;
+	margin: 2px 0 0;
+	padding: 0;
+	border: 1px solid #e6e6e6;
+	background: #FFF;
+	box-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
+.form__box-inner .jq-selectbox li {
+	min-height: 18px;
+	padding: 5px 17px 6px;
+	color: #231F20;
+}
+.form__box-inner .jq-selectbox li.selected {
+	background-color: #A3ABB1;
+	color: #FFF;
+}
+.form__box-inner .jq-selectbox li:hover {
+	background-color: #08C;
+	color: #FFF;
+}
+.form__box-inner .jq-selectbox li.disabled {
+	color: #AAA;
+}
+.form__box-inner .jq-selectbox li.disabled:hover {
+	background: none;
+}
+.form__box-inner .jq-selectbox li.optgroup {
+	font-weight: bold;
+}
+.form__box-inner .jq-selectbox li.optgroup:hover {
+	background: none;
+	color: #231F20;
+	cursor: default;
+}
+.form__box-inner .jq-selectbox li.option {
+	padding-left: 25px;
+}
+
+
+.form__box-inner textarea{
+	outline: none;
+	border: 1px solid #e6e6e6;
+	padding: 10px;
+	height: 208px;
+	resize: none;
+	margin-bottom: 40px;
+	/* отодвинули кнопку на нужное растояние в низ */
+}
+.form__box-inner button{
+	background-color: transparent;
+	color: #282828;
+	float: right;
+	/* отправляем на право кнопку */
+}
+
+.advantages{
+	padding: 55px 0px 40px;
+	/* размеры с макета */
+	background-image: url(../img/adv-fon.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	min-height: 285px;
+	/* размер с макета */
+	background-size: cover;
+}
+
+.advantages__inner {
+	color: #fff;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+}
+.advantages-item {
+	max-width: 360px;
+	padding: 0px 20px;
+
+}
+.advantages__title {
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: 500;
+	font-family: 'Roboto Mono', monospace;
+	padding: 60px 0px 15px;
+	position: relative;
+}
+.advantages__title:before{
+	content: "";
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #ffc222;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	/* 	left: 50%; встает по середине относительно левого края бордера
+	transform: translateX(-50%); выравниваем обьект ровно по сиредине  */
+}
+.advantages__title:after{
+	/* добовляем в обьект before элемент */
+	content: "\f00c";
+	font-family: 'icomoon';
+	font-size: 14px;
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.advantages__text {
+	line-height: 24px;
+	color: #d3d2d2;
+	letter-spacing: 0.1px;
+}
+/* ----------------------------------------------------- */
+
+.news {
+	padding: 55px 0px 110px;
+	background-color: #f9f9f9;
+}
+.news__inner{
+	display: flex;
+	justify-content: space-between;
+}
+.news__slider {
+	max-width: 555px;
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 0px 5px 15.36px 0.64px rgba(128,127,127, 0.13);
+	padding: 60px 35px 45px 70px;
+	position: relative;
+}
+.news__slider::before{
+	position: absolute;
+	top: 0;
+	left: 70px;
+	content: "\f10e";
+	font-family: 'icomoon';
+	background-color: #ffc222;
+	color: #fff;
+	font-size: 16px;
+	width: 65px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	
+}
+.news__slider-inner .slick-btn {
+	top: auto;
+	bottom: -110px;
+}
+.news__slider-inner .slick-next {
+	right: -35px; 
+}
+.news__slider-inner .slick-prev {
+	right: 20px;
+	left: auto;
+}
+.news__slider-inner .slick-disabled{
+	color: #dadada;
+	border-color: #dadada;
+	/* задаем цвет не активному окну */
+}
+.news__slider-inner .slick-disabled::before{
+	color: #dadada;
+	/* задаем цвет стрелке */
+}
+.news__slider-title {
+	font-size: 18px;
+	line-height: 24px;
+	color: #242424;
+	font-size: 500;
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 0.5px;
+	margin-bottom: 15px;
+}
+.news__slider-text {
+	margin-bottom: 30px;
+}
+.news__slider-author {
+	letter-spacing: 0.1px;
+	color: #212020;
+	font-family: 'Roboto', sans-serif;
+	font-size: 500;
+}
+.news__blog {
+	max-width: 260px;
+	width: 100%;
+}
+.news__images {
+	position: relative;
+}
+.news__date {
+	position: absolute;
+	background-color: #ffc222;
+	height: 55px;
+	width: 50px;
+	color: #fff;
+	text-align: center;
+	padding-top: 30px;
+	font-weight: 700;
+	top: 0px;
+	left: 10px;
+}
+.news__blog-title {
+	font-size: 16px;
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 0.5px;
+	color: #242424;
+	padding: 12px 0;
+}
+.news__blog-text {
+	letter-spacing: 0.1px;
+	color: #5e5e5e;
+	/* color text весит на badi  но у нас ссылка , поэтому необходимо color перезадать вновь */
+}
+/* --------------------------------------------------------------------- */
+.footer__content {
+	background-color: #595959;
+	padding: 20px 0px 30px;
+}
+.footer__inner{
+	display: flex;
+	justify-content: space-between;
+}
+.footer__info {
+	max-width: 360px;
+}
+.footer__title {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+	color: #fff;
+	line-height: 36px;
+	letter-spacing: 0.5px;
+}
+.footer__text {
+	color: #d3d2d2;
+	margin-bottom: 20px;
+}
+.footer__inner .header__btn {
+	float: none;
+	display: inline-block;
+}
+.footer__list {
+	padding-top: 10px;
+}
+.footer__list li {
+	margin-top: 10px;
+}
+.footer__list a{
+	font-size: 16px;
+	letter-spacing: 0.25px;
+	color: #fff;
+	line-height: 24px;
+	font-weight: 400;
+	font-family: 'Roboto', sans-serif;
+	padding-left: 33px;
+	position: relative;
+}
+.footer__list a::before{
+	position: absolute;
+	left: 0;
+	content: '';
+	color: #ffc222;
+	content: "\f003";
+	font-family: 'icomoon';
+}
+.footer__list .footer__phone::before{
+	content: "\f095";
+	left: 3px;
+}
+.footer__list .footer__adress::before{
+	content: "\f041";
+	left: 3px;	
+}
+.footer__map {
+	padding-top: 10px;
+	max-width: 630px;
+	width: 100%;
+}
+.footer__map iframe {
+	width: 100%;
+}
+.footer__copy {
+	background-color: #303030;
+	text-align: center;
+	font-size: 12px;
+	line-height: 24px;
+	padding: 8px 0px;
+	font-weight: 400;
+	font-family: 'Roboto', sans-serif;
+}
+#modal{
+	width: 300px;
+}
+#modal input{
+	display: block;
+	width: 100%;
+	margin-bottom: 20px;
+	outline: none;
+	height: 40px;
+	border: 1px solid #e6e6e6;
+	padding: 0px 10px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	/* 	font-family:; font-weight:  эти команды идут друг с другом не изменно */
+}
+#modal input[type="submit"]{
+	background-color: #ffc222;
+	border: none;
+}
+.header__btn-menu{
+	display: none;
+	font-size: 28px;
+}
